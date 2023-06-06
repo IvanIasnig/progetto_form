@@ -1,0 +1,47 @@
+<h1>Reactive form</h1>
+<form [formGroup]="homeform" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Nome</mat-label>
+    <input matInput type="text" name="nome" formControlName="nome" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Alter Ego</mat-label>
+    <input matInput type="text" name="alter" formControlName="alter" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Super Potere</mat-label>
+    <mat-select>
+      <mat-option value="one">Super Velocità</mat-option>
+      <mat-option value="two">Super Forza</mat-option>
+      <mat-option value="two">Fermare il tempo</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Nemico</mat-label>
+    <input matInput type="text" name="nemico" formControlName="nemico" required />
+  </mat-form-field>
+  <p *ngIf="!homeform.get('nemico')!.valid && homeform.get('nemico')!.touched">Bisogna inserire meno di 10 caratteri</p>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Pianeta</mat-label>
+    <input matInput type="text" name="pianeta" formControlName="pianeta" required />
+  </mat-form-field>
+  <p *ngIf="!homeform.get('pianeta')!.valid && homeform.get('pianeta')!.touched">Campo non valido, il campo è obbligatorio e deve contenere almeno 5 caratteri</p>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Debolezza</mat-label>
+    <input matInput type="text" name="nome" formControlName="debolezza" required />
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="!homeform.valid"
+  >
+    Crea
+  </button>
+</form>
